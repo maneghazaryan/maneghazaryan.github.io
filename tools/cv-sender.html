@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>CV</title></head>
+<body>
+<script>
+(async function () {
+  var p = new URLSearchParams(location.search);
+  var file = p.get('lang') === 'ru' ? '../ManeGhazaryan_CV_2026_RU.pdf' : '../ManeGhazaryan_CV_2026.pdf';
+  try {
+    var r = await fetch(file + '?v=' + Date.now(), { cache: 'no-store' });
+    var b = await r.blob();
+    if (window.parent && window.parent !== window) window.parent.postMessage({ cvBlob: b }, '*');
+  } catch (e) {}
+})();
+</script>
+</body></html>
